@@ -658,9 +658,9 @@ def jupyterlite_build(app: Sphinx, error):
 
         jupyterlite_dir = str(app.env.config.jupyterlite_dir)
 
-        jupyterlite_build_command_options: Dict[str, Any] = (
-            app.env.config.jupyterlite_build_command_options
-        )
+        jupyterlite_build_command_options: Dict[
+            str, Any
+        ] = app.env.config.jupyterlite_build_command_options
 
         config = []
         if jupyterlite_config:
@@ -730,7 +730,7 @@ def jupyterlite_build(app: Sphinx, error):
             kwargs["stderr"] = subprocess.PIPE
 
         completed_process: CompletedProcess[bytes] = subprocess.run(
-            command, cwd=app.srcdir, check=True, **kwargs
+            command, cwd=app.srcdir, check=False, **kwargs
         )
 
         if completed_process.returncode != 0:
